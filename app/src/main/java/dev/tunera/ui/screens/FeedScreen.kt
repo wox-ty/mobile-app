@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -30,11 +31,20 @@ fun FeedScreen(nav: NavController, useCases: UseCases) {
         Spacer(modifier = Modifier.height(12.dp))
         LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             items(feed) { item ->
-                Card(modifier = Modifier.fillMaxWidth()) {
+                Card(
+                    modifier = Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.background,
+                    )
+                ) {
                     Column(modifier = Modifier.padding(12.dp)) {
-                        Text(item.name, style = MaterialTheme.typography.titleMedium)
+                        Text(
+                            item.name,
+                            style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.surface
+                        )
                         val track = item.nowPlaying ?: item.lastPlayed
-                        val status = if (item.nowPlaying != null) "сейчас слушает" else "слушал недавно"
+                        val status =
+                            if (item.nowPlaying != null) "сейчас слушает" else "слушал недавно"
                         Text("$status: ${track?.title} — ${track?.artist}")
                         Spacer(modifier = Modifier.height(8.dp))
                         Row(
