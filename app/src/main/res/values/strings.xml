@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Tunera</string>
+    <string name="login_title">Tunera</string>
+    <string name="login_email">Email</string>
+    <string name="login_password">Пароль</string>
+    <string name="login_button">Войти</string>
+</resources>
