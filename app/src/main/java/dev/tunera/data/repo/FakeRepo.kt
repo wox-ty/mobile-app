@@ -2,14 +2,21 @@ package dev.tunera.data.repo
 
 import dev.tunera.data.models.FriendStatus
 import dev.tunera.data.models.ServiceAvailability
-import dev.tunera.data.models.Track
+import dev.tunera.data.models.UnifiedTrack
+import dev.tunera.data.models.platforms.Spotify
+import java.time.LocalDateTime
 
 class FakeRepo {
-    private val sampleTrack = Track(
+    private val sampleTrack = UnifiedTrack(
         id = "track_1",
         title = "Night Drive",
         artist = "Neon Coast",
-        coverUrl = ""
+        coverUrl = "",
+        album = "kkk",
+        playlist = "MMM",
+        sources = listOf(Spotify("1", "spoty", 1)),
+        addedAt = LocalDateTime.now(),
+        updatedAt = LocalDateTime.now()
     )
 
     fun getFeed(): List<FriendStatus> {
@@ -20,7 +27,7 @@ class FakeRepo {
         )
     }
 
-    fun getTrack(): Track = sampleTrack
+    fun getTrack(): UnifiedTrack = sampleTrack
 
     fun getAvailability(): List<ServiceAvailability> {
         return listOf(
