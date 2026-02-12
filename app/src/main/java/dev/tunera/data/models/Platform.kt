@@ -1,9 +1,15 @@
 package dev.tunera.data.models
 
-interface Platform {
-    val id: String
-    val displayName: String
+abstract class Platform(
+    val id: String,
+    val displayName: String,
     val priority: Int
+) {
+    protected fun requireExternalId(externalId: String): String {
+        val trimmed = externalId.trim()
+        require(trimmed.isNotEmpty()) { "externalId is empty" }
+        return trimmed
+    }
 
-    fun buildTrackUrl(externalId: String): String
+    abstract fun buildTrackUrl(externalId: String): String
 }

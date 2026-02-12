@@ -9,6 +9,7 @@ data class UnifiedTrack(
     val album: String,
     val playlist: String,
     val sources: List<Platform>,
+    val coverUrl: String,
     val addedAt: LocalDateTime,
     val updatedAt: LocalDateTime
 )
